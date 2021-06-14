@@ -1,0 +1,270 @@
+@import "config.scss";
+@import "menu.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background;
+  background: $primary-color;
+  color: set-text-color($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+// Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    font-size: 6rem;
+  }
+  .rw-wrapper {
+    width: 80%;
+    position: relative;
+    margin: 110px auto 0 auto;
+    font-family: "Bree Serif";
+    padding: 10px;
+  }
+  .rw-sentence {
+    margin: 0;
+    text-align: left;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+  }
+  .rw-sentence span {
+    color: #eece1a;
+    white-space: nowrap;
+    font-size: 200%;
+    font-weight: normal;
+  }
+  .rw-words {
+    display: inline;
+    text-indent: 10px;
+  }
+  .rw-words span {
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    width: 100%;
+    color: #eece1a;
+  }
+  .rw-words-1 span {
+    animation: rotateWordsFirst 18s linear infinite 0s;
+  }
+  .rw-words-2 span {
+    animation: rotateWordsSecond 28s linear infinite 0s;
+  }
+  .rw-words span:nth-child(2) {
+    animation-delay: 4s;
+    color: #eece1a;
+  }
+  .rw-words span:nth-child(3) {
+    animation-delay: 8s;
+    color: #eece1a;
+  }
+  .rw-words span:nth-child(4) {
+    animation-delay: 12s;
+    color: #eece1a;
+  }
+  .rw-words span:nth-child(5) {
+    animation-delay: 16s;
+    color: #eece1a;
+  }
+  .rw-words span:nth-child(6) {
+    animation-delay: 20s;
+    color: #eece1a;
+  }
+  .rw-words span:nth-child(7) {
+    animation-delay: 24s;
+    color: #eece1a;
+  }
+  @keyframes rotateWordsSecond {
+    0% {
+      opacity: 1;
+      animation-timing-function: ease-in;
+      width: 0px;
+    }
+    10% {
+      opacity: 0.3;
+      width: 0px;
+    }
+    20% {
+      opacity: 1;
+      width: 100%;
+    }
+    27% {
+      opacity: 0;
+      width: 100%;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+/*&.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }*/
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  // height: 100%;
+  min-height: calc(100vh - 60px);
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+      @include easeOut;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+  }
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job-1 {
+    grid-area: job1;
+  }
+
+  .job-2 {
+    grid-area: job2;
+  }
+
+  .job-3 {
+    grid-area: job3;
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+// Work/Projects
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+// Contact Page
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+
+// Button Styles
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+@import "mobile.scss";
